@@ -1,0 +1,341 @@
+NAPKIN.AI FLOWCHART PROMPTS FOR HEAL MATRIX SYSTEM
+================================================================
+
+Copy and paste these prompts into Napkin.ai to generate professional flowcharts for your HEAL MATRIX project.
+
+================================================================
+PROMPT 1: MAIN SYSTEM ARCHITECTURE FLOWCHART
+================================================================
+
+Create a comprehensive system architecture flowchart for HEAL MATRIX with the following components:
+
+Title: "HEAL MATRIX System Architecture"
+
+Layers (top to bottom):
+1. USER INTERFACE LAYER
+   - Web Browser (Gradio Interface)
+   - Input: Text Query, Voice Input, Image Upload
+   - Output: Text Response, Voice Response, Visual Results
+
+2. ORCHESTRATION LAYER
+   - LangGraph State Machine
+   - Router Agent (Intent Classification)
+   - State Management
+   - Context Tracking
+
+3. AGENT LAYER (6 Specialized Agents in parallel):
+   - Emergency Response Agent
+   - Medical Consultation Agent
+   - Appointment Scheduling Agent
+   - Prescription Management Agent
+   - Health Monitoring Agent
+   - General Query Handler
+
+4. SERVICE LAYER
+   - LLM Backend (Ollama Gemma 2B)
+   - Computer Vision Module (CLIP)
+   - Text-to-Speech Service (Google TTS)
+   - Geolocation Service (Google Maps API)
+   - Data Storage
+
+5. INFRASTRUCTURE LAYER
+   - Google Colab Environment
+   - GPU Resources (T4)
+   - Network Access (ngrok tunnel)
+
+Show bidirectional arrows between layers indicating data flow and agent communication.
+
+================================================================
+PROMPT 2: USER INTERACTION WORKFLOW
+================================================================
+
+Create a user interaction workflow flowchart showing:
+
+Title: "HEAL MATRIX User Journey Flow"
+
+Start: User accesses Gradio interface
+
+Decision Diamond 1: "Input Type?"
+- Branch A: Text Query → Process text input
+- Branch B: Voice Input → Convert to text → Process text input
+- Branch C: Image Upload → CLIP Analysis → Process with context
+
+Process: "Router Agent Intent Classification"
+
+Decision Diamond 2: "Detected Intent?"
+- Branch 1: Emergency → Emergency Response Agent → Find facilities → First aid guidance → End
+- Branch 2: Medical Question → Medical Consultation Agent → Symptom analysis → Recommendations → End
+- Branch 3: Appointment → Appointment Agent → Check availability → Book/Modify → Confirmation → End
+- Branch 4: Prescription → Prescription Agent → Medication info → Pharmacy location → End
+- Branch 5: Health Tracking → Health Monitor Agent → Log data → Trend analysis → End
+- Branch 6: General Query → General Handler → Answer question → End
+
+Each branch ends at: "Generate Response → TTS Conversion → Display to User"
+
+================================================================
+PROMPT 3: EMERGENCY RESPONSE WORKFLOW
+================================================================
+
+Create an emergency response workflow showing:
+
+Title: "Emergency Response Agent Flow"
+
+Start: User reports emergency
+
+Step 1: Collect symptom information
+↓
+Step 2: Assess severity level
+↓
+Decision: "Life-threatening?"
+- YES → Priority path:
+  - Immediate call 911 advice
+  - Critical first aid instructions
+  - Nearest ER location with distance
+  - Step-by-step guidance
+  - End with follow-up instructions
+
+- NO → Standard path:
+  - Symptom-specific first aid
+  - Assessment questions
+  - Nearest urgent care/clinic
+  - When to escalate advice
+  - Self-care instructions
+  - End with monitoring guidance
+
+All paths include:
+- TTS voice output for hands-free guidance
+- Google Maps integration for facility locations
+- Medical disclaimer
+
+================================================================
+PROMPT 4: MEDICAL CONSULTATION WORKFLOW
+================================================================
+
+Create a medical consultation workflow:
+
+Title: "Medical Consultation Agent Flow"
+
+Start: User presents medical question/symptoms
+
+Decision: "Image provided?"
+- YES → CLIP Vision Analysis → Extract visual information → Combine with text
+- NO → Continue with text only
+
+Step 1: Initial symptom gathering
+↓
+Step 2: Ask clarifying questions (iterative loop)
+↓
+Step 3: Analyze symptom patterns
+↓
+Step 4: Generate preliminary assessment
+↓
+Decision: "Requires professional care?"
+- URGENT → Recommend immediate medical attention → End with referral
+- NEEDED → Suggest doctor appointment → End with advice
+- OPTIONAL → Provide self-care recommendations → End with monitoring tips
+- NONE → Provide health information → End with general guidance
+
+All paths end with:
+- Medical disclaimer
+- Option for follow-up questions
+- Voice synthesis of response
+
+================================================================
+PROMPT 5: MULTI-AGENT COORDINATION
+================================================================
+
+Create a multi-agent coordination diagram:
+
+Title: "LangGraph Agent Coordination"
+
+Center: State Manager (maintains conversation context)
+
+Connected to 6 agent nodes in circular arrangement:
+
+1. Router Agent
+   - Input: All user queries
+   - Output: Route to appropriate agent
+   - Connection: Bidirectional with all agents
+
+2. Emergency Agent
+   - Input: Emergency keywords, urgent symptoms
+   - Tools: Google Maps, First Aid Database
+   - Output: Emergency guidance, facility locations
+
+3. Medical Consultation Agent
+   - Input: Symptoms, health questions, medical images
+   - Tools: CLIP Vision, Medical Knowledge Base
+   - Output: Symptom assessment, recommendations
+
+4. Appointment Agent
+   - Input: Scheduling requests
+   - Tools: Calendar system, Availability checker
+   - Output: Appointment confirmations
+
+5. Prescription Agent
+   - Input: Medication queries
+   - Tools: Drug database, Google Maps (pharmacies)
+   - Output: Medication info, pharmacy locations
+
+6. Health Monitor Agent
+   - Input: Health metrics, vital signs
+   - Tools: Data logger, Analytics
+   - Output: Health trends, alerts
+
+All agents connect to:
+- Ollama LLM (for reasoning)
+- TTS Service (for voice output)
+- State Manager (for context)
+
+================================================================
+PROMPT 6: COMPUTER VISION PIPELINE
+================================================================
+
+Create a computer vision analysis pipeline:
+
+Title: "Medical Image Analysis Pipeline"
+
+Start: User uploads medical image
+
+↓
+Step 1: Image Preprocessing
+- Resize and normalize
+- Format validation
+- Quality check
+
+↓
+Step 2: CLIP Model Processing
+- Image encoding
+- Feature extraction
+- Embedding generation
+
+↓
+Step 3: Visual Understanding
+- Object/symptom detection
+- Pattern recognition
+- Anomaly identification
+
+↓
+Step 4: LLM Integration
+- Combine visual features with text query
+- Generate contextual interpretation
+- Medical relevance assessment
+
+↓
+Step 5: Response Generation
+- Describe visual findings
+- Provide preliminary assessment
+- Recommend next steps
+
+↓
+Decision: "Professional review needed?"
+- YES → Recommend specialist consultation
+- NO → Provide guidance
+
+↓
+End: Display analysis + Voice output
+
+================================================================
+PROMPT 7: DATA FLOW DIAGRAM
+================================================================
+
+Create a data flow diagram showing:
+
+Title: "HEAL MATRIX Data Flow"
+
+External entities:
+- User
+- Google Maps API
+- Google TTS API
+
+Processes:
+1.0 User Interface (Gradio)
+2.0 Intent Classification (Router)
+3.0 Agent Processing
+4.0 LLM Inference (Ollama)
+5.0 Computer Vision (CLIP)
+6.0 Response Generation
+7.0 Voice Synthesis
+
+Data stores:
+- D1: Conversation State
+- D2: User Context
+- D3: Medical Knowledge Base
+- D4: Appointment Database
+- D5: Health Records
+
+Data flows:
+User → 1.0: Query, Image, Voice
+1.0 → 2.0: Processed input
+2.0 → 3.0: Routed request
+3.0 → 4.0: Prompt for reasoning
+3.0 → 5.0: Image for analysis
+4.0 → 6.0: Generated content
+5.0 → 6.0: Visual analysis
+6.0 → 7.0: Text response
+7.0 → 1.0: Audio file
+1.0 → User: Final response
+
+External API calls:
+3.0 → Google Maps: Location query
+3.0 → Google TTS: Text for synthesis
+
+================================================================
+PROMPT 8: DEPLOYMENT ARCHITECTURE
+================================================================
+
+Create a deployment architecture diagram:
+
+Title: "HEAL MATRIX Deployment on Google Colab"
+
+Infrastructure Components:
+
+Cloud Platform: Google Colab
+- GPU: NVIDIA T4
+- RAM: 12-16 GB
+- Storage: Temporary session storage
+
+Container Stack (vertical):
+1. Operating System: Ubuntu 22.04
+2. Python Runtime: 3.10+
+3. Dependencies Layer:
+   - LangChain
+   - Transformers
+   - Gradio
+   - OpenCV
+   - gTTS
+
+Application Layer:
+- Ollama Server (port 11434)
+- LangGraph State Machine
+- Agent Modules
+- Gradio Web Server (port 7860)
+
+Network Layer:
+- ngrok Tunnel (public HTTPS)
+- Gradio Public Link
+
+External Services (cloud symbols):
+- Google Maps API
+- Google TTS API
+
+User Access:
+- Web browsers (desktop/mobile)
+- Public internet → ngrok → Gradio interface
+
+================================================================
+
+USAGE INSTRUCTIONS:
+1. Copy each prompt individually into Napkin.ai
+2. Napkin will generate a professional flowchart/diagram
+3. Customize colors, layout, and styling as needed
+4. Export as PNG, SVG, or PDF
+5. Include in your research presentation or documentation
+
+RECOMMENDED NAPKIN SETTINGS:
+- Style: Professional/Technical
+- Color scheme: Blue/Green healthcare theme
+- Layout: Hierarchical or radial depending on diagram type
+- Font: Clean sans-serif (Arial, Helvetica)
+
+================================================================
